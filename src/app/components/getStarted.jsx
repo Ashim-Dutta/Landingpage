@@ -44,6 +44,21 @@ export default function GetStartedSection() {
     return () => clearInterval(interval);
   }, []);
 
+  // Effect to load the HubSpot form script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://js-na2.hsforms.net/forms/embed/242531638.js";
+    script.defer = true; // Use defer as specified in the instruction
+    document.body.appendChild(script);
+
+    return () => {
+      // Clean up the script when the component unmounts
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []); // Empty dependency array ensures it runs once on mount
+
   const getLineFill = (index) => {
     if (activeStep > index) return 100;
     if (activeStep === index) return 100;
@@ -214,72 +229,8 @@ export default function GetStartedSection() {
             className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md"
             variants={itemVariant}
           >
-            <form className="space-y-4">
-              <div>
-                <label className="block font-[500] text-[12px] mb-1">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g. Ramesh"
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 outline-none"
-                />
-              </div>
-
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1">
-                  <label className="block font-[500] text-[12px] mb-1">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="e.g. +62 30123406"
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 outline-none"
-                  />
-                </div>
-                <div className="flex-1">
-                  <label className="block font-[500] text-[12px] mb-1">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="e.g. Ramesh96@gmail.com"
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 outline-none"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1">
-                  <label className="block font-[500] text-[12px] mb-1">
-                    Hotel Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Hotel Grand"
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 outline-none"
-                  />
-                </div>
-                <div className="flex-1">
-                  <label className="block font-[500] text-[12px] mb-1">
-                    No of Rooms
-                  </label>
-                  <input
-                    min="0"
-                    type="number"
-                    placeholder="e.g. 50"
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 outline-none"
-                  />
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-purple-700 to-purple-900 cursor-pointer text-white font-semibold rounded-md py-3 transition-all hover:scale-105"
-              >
-                Book Your Free Demo
-              </button>
-            </form>
+            {/* HubSpot Form */}
+            <div className="hs-form-frame" data-region="na2" data-form-id="fd900922-ff8a-426a-96f6-b04cab2d4a0b" data-portal-id="242531638"></div>
           </motion.div>
         </motion.div>
       </section>
