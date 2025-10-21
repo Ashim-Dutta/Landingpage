@@ -48,7 +48,6 @@ export default function GetStartedSection() {
   useEffect(() => {
     const script = document.createElement('script');
     script.src = "https://js-na2.hsforms.net/forms/embed/242531638.js";
-    script.defer = true; // Use defer as specified in the instruction
     document.body.appendChild(script);
 
     return () => {
