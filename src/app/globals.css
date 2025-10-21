@@ -10,3 +10,6 @@ html,
 body {
     font-family: 'MyCustomFont', sans-serif;
 }
+#demo{
+    scroll-margin-top: 80px; /* prevent navbar overlap */
+}

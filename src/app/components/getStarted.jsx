@@ -201,7 +201,7 @@ export default function GetStartedSection() {
       </section>
 
       {/* Demo Form Section */}
-      <section className="bg-[#6609BE] py-16 px-6 relative">
+      <section id="demo" className="bg-[#6609BE] py-16 px-6 relative">
           <div className="absolute left-30 inset-0 bg-[url('/image.png')] bg-cover bg-center pointer-events-none"></div>
         <motion.div
           className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12"

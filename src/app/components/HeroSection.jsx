@@ -50,6 +50,13 @@ export default function HeroSection() {
     };
   }, []);
 
+  const scrollToDemo = () => {
+    const section = document.getElementById("demo");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <section
@@ -115,11 +122,12 @@ export default function HeroSection() {
 
             {/* Main Button */}
             <motion.button
+            onClick={scrollToDemo}
               variants={buttonCombinedVariant}
               initial={{ opacity: 0, }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-5 bg-gradient-to-r from-[#6609BE] to-[#2F0458] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all text-base sm:text-lg bg-[length:200%_200%]"
+              className="w-full sm:w-auto cursor-pointer px-6 sm:px-8 py-4 sm:py-5 bg-gradient-to-r from-[#6609BE] to-[#2F0458] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all text-base sm:text-lg bg-[length:200%_200%]"
             >
               Book Your Free Demo
             </motion.button>

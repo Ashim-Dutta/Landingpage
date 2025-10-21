@@ -27,6 +27,14 @@ export default function Navbar() {
     exit: { opacity: 0, y: -20, transition: { duration: 0.2 } },
   };
 
+  const scrollToDemo = () => {
+    const section = document.getElementById("demo");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  
+
   return (
     <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,6 +47,7 @@ export default function Navbar() {
           {/* Desktop Button */}
           <div className="hidden lg:block">
             <motion.button
+            onClick={scrollToDemo}
               variants={buttonFloatVariant}
               initial="animate"
               animate="animate"
